@@ -50,6 +50,7 @@ const migrationLog = log.migration;
     const migrationOptions = {
         dest_cloud             : cloudinary.config().cloud_name,
         from_csv_file          : args.fromCsvFile,
+        log_location           : args.logFile,
         max_concurrent_uploads : args.maxConcurrentUploads
     }
 
@@ -132,6 +133,7 @@ async function confirmMigrationOptionsOrExit_Async(migrationOptions) {
 `❗️WARNING: This script will perform asset migration with the following parameters:
     - source file           :  '${migrationOptions.from_csv_file}'
     - destination cloud     :  '${migrationOptions.dest_cloud}'
+    - logging to            :  '${migrationOptions.log_location}' 
     - max concurrent uploads:  ${migrationOptions.max_concurrent_uploads}
 Are you sure you want to proceed?`;
     const promptConfirmed = await confirm_Async(migrationPrompt);
